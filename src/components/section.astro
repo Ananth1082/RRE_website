@@ -1,0 +1,13 @@
+---
+interface Props {
+  sectionTitle: string;
+}
+const { sectionTitle }: Props = Astro.props;
+---
+
+<section
+  class="border-2 border-black grid place-content-center h-[100vh]"
+  id={sectionTitle}
+>
+  {sectionTitle}
+</section>

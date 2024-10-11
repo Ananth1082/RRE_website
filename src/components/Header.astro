@@ -1,0 +1,62 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<div class="header-cover fixed w-full">
+  <header>
+    <div class="border-1 border-black flex justify-between w-[95vw] px-10 py-4">
+      <Logo />
+      <div id="btn-cover" class="h-0 bg-amber-200">
+        <button class="border-2 border-black p-2" id="contact-btn"
+          >Get in touch</button
+        >
+      </div>
+    </div>
+  </header>
+</div>
+
+<style>
+  #btn-cover:hover {
+    height: 43px;
+  }
+  #btn-cover {
+    transition: height 0.5s linear;
+  }
+
+  .header-cover {
+    height: 0;
+    background: #000;
+    transition: all 0.5s linear;
+  }
+
+  div.cover {
+    height: 92px;
+    color: white;
+  }
+  button.cover {
+    border-color: white;
+  }
+</style>
+
+<script>
+  let isTriggered = false;
+  const headerCover = document.querySelector(".header-cover");
+  const btn = document.querySelector("#contact-btn");
+  window.addEventListener("scroll", () => {
+    // Calculate half the height of the viewport
+    const halfScreenHeight = window.innerHeight / 2;
+    // Get the current scroll position
+    const scrollPositionY = window.scrollY;
+
+    // Check if scroll position has reached half the screen height
+    if (scrollPositionY >= halfScreenHeight) {
+      headerCover?.classList.add("cover");
+      btn?.classList.add("cover");
+      isTriggered = true;
+    } else {
+      headerCover?.classList.remove("cover");
+      btn?.classList.remove("cover");
+      isTriggered = false;
+    }
+  });
+</script>
